@@ -3,8 +3,16 @@ const http = require("http");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const router = require("./router");
+const mongoose = require("mongoose");
 
 const app = express();
+
+mongoose.connect('mongodb://localhost:auth/auth',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+
 // App setup
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: "*/*" }));
